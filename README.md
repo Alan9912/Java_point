@@ -171,3 +171,4 @@ public static void main(String[] args) {    int result = add(15, 20);    System.
 
 下图可以进行更直观的解释说明
 
+![Alt text](https://raw.githubusercontent.com/Alan9912/Java_point/main/class_png.png)
