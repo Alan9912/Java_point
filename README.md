@@ -140,7 +140,26 @@ int[] arr = { 5, 3, 6, 9, 8, 7, 1, 2, 4 };// 定义参数接收最大值int max 
 - 多个方法的参数不相同，类型不同或数量不同
 
 ```java
-public static void main(String[] args) {    int result = add(15, 20);    System.out.println(result);    result = add(15, 20, 35);    System.out.println(result);    result = add(15, 25, 36, 20);    System.out.println(result);}public static int add(int a, int b) {    return a + b;}public static int add(int a, int b, int c) {    return a + b + c;}public static int add(int a, int b, int c, int d) {    return a + b + c + d;}
+public static void main(String[] args) {
+    int result = add(15, 20);
+    System.out.println(result);
+    result = add(15, 20, 35);
+    System.out.println(result);
+    result = add(15, 25, 36, 20);
+    System.out.println(result);
+}
+
+public static int add(int a, int b) {
+    return a + b;
+}
+
+public static int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+public static int add(int a, int b, int c, int d) {
+    return a + b + c + d;
+}
 ```
 
 #### 类的定义
@@ -349,4 +368,222 @@ StringBuilder sb = new StringBuilder();
 //带参StringBuilder对象
 StringBuilder sb2 = new StringBuilder("sb2");
 ```
+
+##### 字符串拼接
+
+字符串名.append()，拼接时没有类型限制，会改变原对象。
+
+```java
+//new空白StringBuilder对象
+StringBuilder sb = new StringBuilder();
+sb.append("我");
+sb.append("是");
+sb.append("第");
+sb.append("100");
+sb.append("个");
+sb.append("大");
+sb.append("聪");
+sb.append("明");
+System.out.println(sb);
+//上面拼接字符方法也可写成下列形式
+//链式编程,因为StringBuilder.append()的返回值是一个对象，对象还可以继续调用append()方法，所以构成下面的链式编程
+StringBuilder sb2 = new StringBuilder();
+sb2.append("我").append("是").append("第").append("100").append("个").append("大").append("聪").append("明");
+System.out.println(sb2);
+```
+
+##### 字符串反转
+
+字符串名.reverse()，会改变原对象。
+
+```java
+//new空白StringBuilder对象
+StringBuilder sb = new StringBuilder("abcdefg1234567");
+System.out.println(sb);
+sb.reverse();
+System.out.println(sb);
+```
+
+##### String和StringBuilder相互转换
+
+string转换为StringBuilder
+
+```java
+String s="intelligent";
+StringBuilder sb=new StringBuilder(s);
+```
+
+StringBuilder转换为String
+
+```java
+StringBuilder sb = new StringBuilder("abcdefg1234567");
+String s=sb.toString();
+```
+
+#### 集合ArrayList\<E>
+
+使用该集合类型需要导入包java.util，该类型是可调整大小的数组实现。
+
+\<E>是一种特殊的数据类型，泛型，在出现E的地方使用引用数据类型替代即可。
+
+例如ArrayList\<String>、ArrayList\<Student>
+
+##### ArrayList构造
+
+使用前需先导入包java.util.ArrayList
+
+ArrayList<String> 数组名= new ArrayList<String>();
+
+```java
+ArrayList<String> array = new ArrayList<String>();
+```
+
+##### ArrayList添加
+
+该方法具有方法重载。
+
+array.add(元素);				//在数组末尾添加指定元素
+
+array.add(索引,元素);		//在数组指定索引位置插入指定元素，索引不可越界（超出数组最大长度）
+
+##### ArrayList删除
+
+该方法具有方法重载。
+
+array.remove(元素);			//指定元素
+
+array.remove(索引);			//删除指定索引元素,返回被删除的元素，索引不可越界（超出数组最大长度）
+
+##### ArrayList修改
+
+array.set(索引,元素);		//修改指定索引元素，返回被修改的元素，索引不可越界（超出数组最大长度）
+
+##### ArrayList获取
+
+array.get(索引);					//返回指定索引元素，索引不可越界（超出数组最大长度）
+
+##### ArrayList长度
+
+array.size();					//返回集合中元素个数
+
+```java
+import java.util.ArrayList;
+
+public class ArrayListDemo {
+    public static void main(String[] args){
+        //创建一个新的ArrayList对象，在堆内存中开辟内存空间
+        ArrayList<String> array = new ArrayList<String>();
+        //向ArrayList中添加新的元素
+        array.add("This");
+        array.add("is");
+        array.add("a");
+        array.add("ArrayList");
+        //打印该ArrayList
+        System.out.println(array);
+        //向ArrayList指定位置插入元素,index值就是所插入元素的位置
+        array.add(3,"new");
+        System.out.println(array);
+        //删除指定元素
+        array.remove("new");
+        System.out.println(array);
+        String result;
+        //删除指定索引元素,返回被删除的元素
+        result=array.remove(3);
+        System.out.println(result);
+        System.out.println(array);
+        //修改指定索引元素，返回被修改的元素
+        result=array.set(2,"nothing");
+        System.out.println(result);
+        System.out.println(array);
+        //返回指定索引元素
+        result=array.get(2);
+        System.out.println(result);
+        System.out.println(array);
+        //返回集合中元素个数
+        int len;
+        len=array.size();
+        System.out.println(len);
+    }
+```
+
+下面为System.out.println()的打印结果
+
+```java
+[This, is, a, ArrayList]
+[This, is, a, new, ArrayList]
+[This, is, a, ArrayList]
+ArrayList
+[This, is, a]
+a
+[This, is, nothing]
+nothing
+[This, is, nothing]
+3
+```
+
+#### 快捷键Alt+Insert
+
+该快捷键可以快速生成构造方法和get、set方法。
+
+#### 退出JVM虚拟机
+
+```java
+System.exit(0)
+```
+
+#### 继承
+
+面向对象三大特征（封装、继承、多态）
+
+##### 继承的格式
+
+public class 子类 extends 父类名{}
+
+```java
+public class child extends parent{}
+//parent是父类，也称为基类，超类
+//child是子类，也称为派生类
+```
+
+##### 继承的好处与弊端
+
+好处：
+
+- 提高了代码的复用性
+
+- 提高了代码的维护性
+
+弊端：
+
+- 类之间的耦合性增强，降低了类的独立性，当父类发生变化时，子类不得不发生改变
+
+##### 继承参数传递
+
+与javaScript原型链相同
+
+子类局部范围->子类成员范围->父类成员范围
+
+##### Super关键字
+
+倘若三个位置都有同一个变量age、构造方法、成员方法add
+
+子类局部范围->子类成员范围->父类成员范围
+
+```java
+age->this.age->super.age			访问变量
+
+this()->super()								访问构造方法
+
+this.add()->super.add()				访问成员方法
+```
+
+##### 继承中构造方法的访问特点
+
+子类中所有的构造方法都会默认访问父类中的**无参**构造方法
+
+因为子类有可能会使用到父类的数据，所以在子类初始化之前要先初始化父类
+
+每一个子类构造方法的第一句都默认是super()，无论有没有写该语句、是无参构造方法和带参构造方法，若要调用父类中的带参构造方法，可在子类构造方法中写入super(参数)。
+
+推荐自己在父类中创建无参构造方法。
 
