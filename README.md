@@ -587,3 +587,23 @@ this.add()->super.add()				访问成员方法
 
 推荐自己在父类中创建无参构造方法。
 
+##### 方法重写
+
+当子类既需要父类中的功能，又需要有自己的特有内容时，可以重写父类中的方法，既沿袭了父类的功能，又定义了特有的功能。
+
+- 父类中私有方法无法重写
+
+在方法前加@override可以注解下方代码为代码重写
+
+```java
+@override
+public void afun(){
+	System.out.println("this is a children fun");
+	super.afun();
+}
+```
+
+
+
+##### final关键字
+
